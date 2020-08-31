@@ -49,12 +49,12 @@ jobs:
 
     - name: Install Ceph 
       run: |
-        apt-get update
-        apt-get install apt-transport-https
-        wget -q -O- 'https://download.ceph.com/keys/release.asc' | apt-key add -
-        echo "deb https://download.ceph.com/debian-octopus/ bionic main" > /etc/apt/sources.list.d/ceph.list
-        apt-get update
-        apt-get install -y --no-install-recommends uuid-runtime ceph-mgr ceph-mon ceph-osd ceph-mds librados-dev libradosstriper-dev
+        sudo apt-get update
+        sudo apt-get install -y apt-transport-https
+        wget -q -O- 'https://download.ceph.com/keys/release.asc' | sudo apt-key add -
+        sudo echo "deb https://download.ceph.com/debian-octopus/ bionic main" > /etc/apt/sources.list.d/ceph.list
+        sudo apt-get update
+        sudo apt-get install -y --no-install-recommends uuid-runtime ceph-mgr ceph-mon ceph-osd ceph-mds librados-dev libradosstriper-dev
 
     - name: check
       uses: actions-rs/cargo@v1
